@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "798635139551",
+    "firebase_url": "https://ossvideo-5e684-default-rtdb.firebaseio.com",
+    "project_id": "ossvideo-5e684",
+    "storage_bucket": "ossvideo-5e684.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798635139551:android:b04a1befe4d6b4afb2646a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798635139551-1bv8c8veeg158vh54qfaml3sm6c9m66n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjIUlvy2SmljH362uCsxW4pAYw0i9c9Yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798635139551-1bv8c8veeg158vh54qfaml3sm6c9m66n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
