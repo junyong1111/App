@@ -2,6 +2,8 @@
     package="com.example.firebase_flutter">
    <application
         android:label="firebase_flutter"
+        android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

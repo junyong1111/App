@@ -12,13 +12,22 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       endDrawer: ProfileDrawer(),
       appBar: _buildAppBar(),
-      body: Column(
-        children: [
-          ProfileHeader(),
-          ProfileCountInfo(),
-          ProfileButtons(),
-          ProfileTab(),
-        ],
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            SliverList(
+              delegate: SliverChildListDelegate([
+                SizedBox(height: 20),
+                ProfileHeader(),
+                SizedBox(height: 20),
+                ProfileCountInfo(),
+                SizedBox(height: 20),
+                ProfileButtons(),
+              ]),
+            ),
+          ];
+        },
+        body: ProfileTab(),
       ),
     );
   }
