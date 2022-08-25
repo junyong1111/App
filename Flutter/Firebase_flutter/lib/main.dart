@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_flutter/pages/fire_video_streaming.dart';
 import 'package:firebase_flutter/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "PatuaOne"),
-      home: Homepage(),
+      home: FireVideoStreaming(),
     );
   }
 }
