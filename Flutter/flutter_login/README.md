@@ -1,16 +1,9 @@
 # flutter_login
 
-A new Flutter project.
+A  Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+<img width="223" alt="스크린샷 2022-08-26 오후 5 11 11" src="https://user-images.githubusercontent.com/79856225/186866773-b9028401-452d-4415-99aa-88207d14db05.png">
+<img width="233" alt="스크린샷 2022-08-26 오후 5 31 26" src="https://user-images.githubusercontent.com/79856225/186866794-fca9eb97-812c-4c3e-8213-1611182f69cd.png">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
