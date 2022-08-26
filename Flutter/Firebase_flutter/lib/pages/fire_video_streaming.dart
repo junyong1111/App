@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
+import '../container/Fire_info.dart';
+
 class FireVideoStreaming extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,15 +14,23 @@ class FireVideoStreaming extends StatelessWidget {
             70.0,
           ),
           child: _buildAppBar()),
-      body: VideoPlayerScreen(),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: VideoPlayerScreen(),
+      ),
     );
   }
 
   AppBar _buildAppBar() => AppBar(
         backgroundColor: Colors.deepOrangeAccent,
-        leading: Icon(
-          CupertinoIcons.home,
-          size: 35,
+        leading: InkWell(
+          onTap: () {
+            print("HOME");
+          },
+          child: Icon(
+            CupertinoIcons.home,
+            size: 35,
+          ),
         ),
         title: const Text(
           "화재 발생 정보 ",
@@ -68,23 +78,19 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     // 다음 단계에서 영상을 보여줄 것입니다.
     return Scaffold(
       appBar: _buildFireAppBar(),
-      body: FutureBuilder(
-        future: _initializeVideoPlayerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            // 만약 VideoPlayerController 초기화가 끝나면, 제공된 데이터를 사용하여
-            // VideoPlayer의 종횡비를 제한하세요.
-            return AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              // 영상을 보여주기 위해 VideoPlayer 위젯을 사용합니다.
-              child: VideoPlayer(_controller),
-            );
-          } else {
-            // 만약 VideoPlayerController가 여전히 초기화 중이라면,
-            // 로딩 스피너를 보여줍니다.
-            return Center(child: CircularProgressIndicator());
-          }
-        },
+      body: Column(
+        children: [
+          _build_Video_Future_Builder(),
+          SizedBox(height: 20),
+          Text(
+            "화재 발생 상세 정보",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Expanded(child: FireInfo()),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -105,10 +111,33 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     );
   }
 
+  FutureBuilder<void> _build_Video_Future_Builder() {
+    return FutureBuilder(
+      future: _initializeVideoPlayerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          // 만약 VideoPlayerController 초기화가 끝나면, 제공된 데이터를 사용하여
+          // VideoPlayer의 종횡비를 제한하세요.
+          return AspectRatio(
+            aspectRatio: _controller.value.aspectRatio,
+            // 영상을 보여주기 위해 VideoPlayer 위젯을 사용합니다.
+            child: VideoPlayer(_controller),
+          );
+        } else {
+          // 만약 VideoPlayerController가 여전히 초기화 중이라면,
+          // 로딩 스피너를 보여줍니다.
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+    );
+  }
+
   AppBar _buildFireAppBar() => AppBar(
+        backgroundColor: Colors.white,
         title: Text(
           '화재 발생 영상',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
+        centerTitle: true,
       );
 }
