@@ -25,7 +25,7 @@ class FireVideoStreaming extends StatelessWidget {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            //Navigator.pushNamed(context!, "/home");
+            // Navigator.pushNamed(context, "/home");
             print("HOME");
           },
           icon: Icon(
