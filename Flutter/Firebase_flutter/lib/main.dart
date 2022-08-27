@@ -22,7 +22,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "PatuaOne"),
-      home: FireVideoStreaming(),
+      initialRoute: "/home",
+      routes: {
+        "/home": (context) => Homepage(),
+        "/fire": (context) => FireVideoStreaming(),
+      },
     );
   }
 }

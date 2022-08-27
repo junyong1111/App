@@ -6,8 +6,13 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
-    );
+        appBar: buildAppBar(),
+        body: TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/fire");
+          },
+          child: Text("화재 발생 정보"),
+        ));
   }
 
   AppBar buildAppBar() => AppBar(

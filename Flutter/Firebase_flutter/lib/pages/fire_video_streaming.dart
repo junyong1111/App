@@ -23,13 +23,14 @@ class FireVideoStreaming extends StatelessWidget {
 
   AppBar _buildAppBar() => AppBar(
         backgroundColor: Colors.deepOrangeAccent,
-        leading: InkWell(
-          onTap: () {
+        leading: IconButton(
+          onPressed: () {
+            //Navigator.pushNamed(context!, "/home");
             print("HOME");
           },
-          child: Icon(
+          icon: Icon(
             CupertinoIcons.home,
-            size: 35,
+            size: 45,
           ),
         ),
         title: const Text(
