@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_yolo/Components/timer.dart';
 
 DateTime now = DateTime.now();
 String convertedDateTime =
@@ -28,16 +27,15 @@ class _HomePageState extends State<HomePage> {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 10),
-          // Text(
-          //   convertedDateTime,
-          //   style: TextStyle(
-          //     fontWeight: FontWeight.bold,
-          //     fontSize: 20,
-          //     color: Color(0xffE26A2C),
-          //   ),
-          //   textAlign: TextAlign.center,
-          // ),
-          FireTimer(),
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/FireVideo");
+              },
+              icon: Icon(
+                Icons.local_fire_department_rounded,
+                color: Color(0xffFF8243),
+                size: 100,
+              ))
         ],
       ),
     );
