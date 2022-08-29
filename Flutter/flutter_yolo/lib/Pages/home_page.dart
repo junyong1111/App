@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
           //   ),
           //   textAlign: TextAlign.center,
           // ),
-          FireTimer(),
+          // FireTimer(),
         ],
       ),
     );
