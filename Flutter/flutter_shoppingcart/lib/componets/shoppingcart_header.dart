@@ -15,9 +15,9 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
     "assets/images/p3.jpeg",
     "assets/images/p4.jpeg",
   ];
-
   @override
   Widget build(BuildContext context) {
+    print("다시 그려짐");
     return Column(
       children: [
         _buildHeaderPic(),
@@ -29,11 +29,14 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
   Widget _buildHeaderPic() {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: AspectRatio(
-        aspectRatio: 5 / 3,
-        child: Image.asset(
-          SeletedPicID[SeletcedID],
-          fit: BoxFit.cover, // 이미지를 꽉 차게 하기위해서
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: AspectRatio(
+          aspectRatio: 5 / 3,
+          child: Image.asset(
+            SeletedPicID[SeletcedID],
+            fit: BoxFit.cover, // 이미지를 꽉 차게 하기위해서
+          ),
         ),
       ),
     );
@@ -66,7 +69,11 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
       ),
       child: IconButton(
         onPressed: () {
-          print("클릭");
+          setState(() {
+            SeletcedID = id;
+          });
+          print(id);
+          print(SeletcedID);
         },
         icon: Icon(
           mIcon,
