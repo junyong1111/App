@@ -27,28 +27,16 @@ class _HomePageState extends State<HomePage> {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 10),
-<<<<<<< HEAD
-          // Text(
-          //   convertedDateTime,
-          //   style: TextStyle(
-          //     fontWeight: FontWeight.bold,
-          //     fontSize: 20,
-          //     color: Color(0xffE26A2C),
-          //   ),
-          //   textAlign: TextAlign.center,
-          // ),
-          // FireTimer(),
-=======
           IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, "/FireVideo");
-              },
-              icon: Icon(
-                Icons.local_fire_department_rounded,
-                color: Color(0xffFF8243),
-                size: 100,
-              ))
->>>>>>> f97e085a1d8cf3f8131d26083b8ec4f7d2041367
+            onPressed: () {
+              Navigator.pushNamed(context, "/FireVideo");
+            },
+            icon: Icon(
+              Icons.local_fire_department_rounded,
+              color: Color(0xffFF8243),
+              size: 100,
+            ),
+          )
         ],
       ),
     );
