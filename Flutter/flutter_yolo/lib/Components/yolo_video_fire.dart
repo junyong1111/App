@@ -1,19 +1,24 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:video_player/video_player.dart';
-import 'dart:async';
-import 'package:flutter/material.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
-  VideoPlayerScreen({Key? key}) : super(key: key);
+  final _apptitle;
+  const VideoPlayerScreen(this._apptitle);
 
   @override
-  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+  _VideoPlayerScreenState createState() => _VideoPlayerScreenState(_apptitle);
 }
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+  final title;
+
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
+
+  _VideoPlayerScreenState(this.title);
 
   @override
   void initState() {
@@ -44,7 +49,16 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('화재 발생 영상'),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: Text(
+          '$title',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       // VideoPlayerController가 초기화를 진행하는 동안 로딩 스피너를 보여주기 위해
       // FutureBuilder를 사용합니다.
@@ -66,7 +80,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           }
         },
       ),
+
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xffFF8243),
         onPressed: () {
           // 재생/일시 중지 기능을 `setState` 호출로 감쌉니다. 이렇게 함으로써 올바른 아이콘이
           // 보여집니다.
@@ -82,9 +98,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         },
         // 플레이어의 상태에 따라 올바른 아이콘을 보여줍니다.
         child: Icon(
+          color: Colors.white,
           _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
         ),
-      ), // 이 마지막 콤마는 build 메서드에 자동 서식이 잘 적용될 수 있도록 도와줍니다.
+      ),
     );
   }
 
