@@ -10,10 +10,7 @@ class YoloVideoFire extends StatefulWidget {
 class _YoloVideoState extends State<YoloVideoFire> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildFireAppBar(),
-      body: VideoPlayerScreen("화재 발생 영상"),
-    );
+    return VideoPlayerScreen("화재 발생 영상");
   }
 
   AppBar _buildFireAppBar() => AppBar(
