@@ -50,20 +50,22 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAt-LqWVe_52SYQq2n5k12_yGn-chd1_g0',
-    appId: '1:892538388011:android:bf7e1c961b5956869a346e',
-    messagingSenderId: '892538388011',
-    projectId: 'yolofirebase-db9c4',
-    storageBucket: 'yolofirebase-db9c4.appspot.com',
+    apiKey: 'AIzaSyDjIUlvy2SmljH362uCsxW4pAYw0i9c9Yo',
+    appId: '1:798635139551:android:ab933d666ba48021b2646a',
+    messagingSenderId: '798635139551',
+    projectId: 'ossvideo-5e684',
+    databaseURL: 'https://ossvideo-5e684-default-rtdb.firebaseio.com',
+    storageBucket: 'ossvideo-5e684.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyChNdhKfjSpNqJEyZh4znVy0mV-OhlQlgk',
-    appId: '1:892538388011:ios:083cc1327b138f4b9a346e',
-    messagingSenderId: '892538388011',
-    projectId: 'yolofirebase-db9c4',
-    storageBucket: 'yolofirebase-db9c4.appspot.com',
-    iosClientId: '892538388011-1cm6sgtdh2s3q9ckqh6fpgigam5n53ng.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBc7FX8gLFZWeCcfxt9pftAXwWyMzwdG48',
+    appId: '1:798635139551:ios:16d604a986a0d7d6b2646a',
+    messagingSenderId: '798635139551',
+    projectId: 'ossvideo-5e684',
+    databaseURL: 'https://ossvideo-5e684-default-rtdb.firebaseio.com',
+    storageBucket: 'ossvideo-5e684.appspot.com',
+    iosClientId: '798635139551-t78amo32964tlha88fjmu1a9bqjl5f02.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutter30',
   );
 }
