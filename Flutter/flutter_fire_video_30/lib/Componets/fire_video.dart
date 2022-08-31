@@ -31,7 +31,8 @@ class _FireVideoState extends State<FireVideo> {
   Future<void> _buildDb() async {
     var db = FirebaseFirestore.instance;
     var doc_ref = await db.collection("Video").doc('FIRE2022년 08월 30일_6').get();
-    print("====================================================");
+    print(
+        "=================================================================================================");
     print(doc_ref.data());
   }
 }

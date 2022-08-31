@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_30/Pages/human_page.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_30/theme.dart';
 
 import 'Pages/fire_video_page.dart';
 import 'Pages/home_page.dart';
+import 'Pages/live_streaming_page.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -22,11 +22,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme(),
-      initialRoute: '/home',
+      initialRoute: '/LiveStreaming',
       routes: {
         '/home': (context) => HomePage(),
         '/FireVideo': (context) => FireVideoPage(),
         '/HumanVideo': (context) => HumanPage(),
+        '/LiveStreaming': (context) => LivePage(),
       },
     );
   }
