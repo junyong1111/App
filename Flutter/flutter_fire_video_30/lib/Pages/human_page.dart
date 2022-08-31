@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_30/Componets/video_play.dart';
 import 'package:flutter_30/constants.dart';
 
-import '../Componets/human_info.dart';
+import '../Componets/human_image.dart';
 
 class HumanPage extends StatelessWidget {
   @override
@@ -22,26 +21,13 @@ class HumanPage extends StatelessWidget {
               ),
             ),
           ),
-          ClipRRect(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(0),
-                child: VideoPlayerScreen(),
-              ),
-            ),
-          ),
           Padding(
-            padding: const EdgeInsets.only(left: 20.0),
-            child: HumanInfo(),
+            padding: const EdgeInsets.all(20.0),
+            child: HumanImage(),
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: VideoPlayerScreen(),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0),
-            child: HumanInfo(),
+            child: HumanImage(),
           ),
         ],
       ),
