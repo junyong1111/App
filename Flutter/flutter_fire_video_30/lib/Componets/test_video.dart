@@ -20,14 +20,16 @@ class _TestVideoExState extends State<TestVideoEx> {
       scheme: 'https',
       host: 'youtube.com',
       path: '/watch',
-      queryParameters: {'v': 'wVbjkI6d5RI'});
+      queryParameters: {'v': 'ZqVespdTudI'});
+
+  var url = Uri.parse('http://203.246.113.210:12345/');
 
   @override
   void initState() {
     // print(mailtoUri);
     // VideoPlayerController를 저장하기 위한 변수를 만듭니다. VideoPlayerController는
     // asset, 파일, 인터넷 등의 영상들을 제어하기 위해 다양한 생성자를 제공합니다.
-    _controller = VideoPlayerController.contentUri(httpsUri
+    _controller = VideoPlayerController.contentUri(url
         // _controller = VideoPlayerController.network(
         //   'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
         );

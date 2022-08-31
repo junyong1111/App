@@ -37,6 +37,7 @@ dependencies:
   video_player: ^2.4.7
   firebase_core: ^1.21.1
   cloud_firestore: ^3.4.6
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
