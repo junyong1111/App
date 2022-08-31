@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme(),
-      initialRoute: '/HumanVideo',
+      initialRoute: '/home',
       routes: {
         '/home': (context) => HomePage(),
         '/FireVideo': (context) => FireVideoPage(),

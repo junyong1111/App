@@ -60,5 +60,15 @@ AppBar _buildFireAppBar(BuildContext context) {
         wordSpacing: 20,
       ),
     ),
+    actions: [
+      IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/HumanVideo");
+          },
+          icon: Icon(
+            Icons.person_sharp,
+            size: 40,
+          ))
+    ],
   );
 }

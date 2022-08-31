@@ -8,7 +8,7 @@ class HumanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildHumanPageAppBar(),
+      appBar: _buildHumanPageAppBar(context),
       body: ListView(
         children: [
           Padding(
@@ -48,12 +48,12 @@ class HumanPage extends StatelessWidget {
     );
   }
 
-  AppBar _buildHumanPageAppBar() => AppBar(
+  AppBar _buildHumanPageAppBar(context) => AppBar(
         backgroundColor: OssAccentColor,
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            print("back");
+            Navigator.pop(context);
           },
           icon: Icon(
             Icons.arrow_back_ios,
