@@ -1,0 +1,4 @@
+#Sat Sep 03 18:42:27 KST 2022
+base.0=/Users/dak_kiwon/Jun/Git_dir/App/Flutter/flutter_chewie_ex/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
