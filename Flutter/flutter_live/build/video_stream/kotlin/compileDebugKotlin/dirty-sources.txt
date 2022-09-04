@@ -1,8 +1,0 @@
-C:\src\flutter\.pub-cache\hosted\pub.dartlang.org\video_stream-0.0.1\android\src\main\kotlin\com\marshalltechnology\video_stream\CameraPermissions.kt
-C:\src\flutter\.pub-cache\hosted\pub.dartlang.org\video_stream-0.0.1\android\src\main\kotlin\com\marshalltechnology\video_stream\VideoEncoder.kt
-C:\src\flutter\.pub-cache\hosted\pub.dartlang.org\video_stream-0.0.1\android\src\main\kotlin\com\marshalltechnology\video_stream\MethodCallHandlerImpl.kt
-C:\src\flutter\.pub-cache\hosted\pub.dartlang.org\video_stream-0.0.1\android\src\main\kotlin\com\marshalltechnology\video_stream\DartMessenger.kt
-C:\src\flutter\.pub-cache\hosted\pub.dartlang.org\video_stream-0.0.1\android\src\main\kotlin\com\marshalltechnology\video_stream\VideoStreamPlugin.kt
-C:\src\flutter\.pub-cache\hosted\pub.dartlang.org\video_stream-0.0.1\android\src\main\kotlin\com\marshalltechnology\video_stream\Camera.kt
-C:\src\flutter\.pub-cache\hosted\pub.dartlang.org\video_stream-0.0.1\android\src\main\kotlin\com\marshalltechnology\video_stream\CameraUtils.kt
-C:\src\flutter\.pub-cache\hosted\pub.dartlang.org\video_stream-0.0.1\android\src\main\kotlin\com\marshalltechnology\video_stream\RtmpCameraConnector.kt
