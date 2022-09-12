@@ -1,0 +1,4 @@
+#Thu Sep 08 19:37:38 KST 2022
+base.0=/Users/dak_kiwon/Jun/Git_dir/App/Flutter/flutter_socket_video/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
