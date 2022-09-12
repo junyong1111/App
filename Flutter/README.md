@@ -2050,11 +2050,67 @@ class RecipePage extends StatelessWidget {
 </div>
 </details>
 
+<details>
+<summary> 4장 AppBar (Page 수정) </summary>
+<div markdown="1">
+
+- AppBar의 기본 구조
+
+<img width="403" alt="스크린샷 2022-08-23 오후 11 28 52" src="https://user-images.githubusercontent.com/79856225/189667016-9d5e2f7d-bc20-4e3a-9b35-199d1f108672.png">
+
+[pub.dev](http://pub.dev)
+
+icon 입력 후 원하는 아이콘 라이브러리 사용가능
+
+- 만들고자 하는 AppBar
+
+<img width="305" alt="스크린샷 2022-08-24 오후 12 51 48" src="https://user-images.githubusercontent.com/79856225/189667022-6e2e75bd-fb3b-408b-85b0-88dd732e4b96.png">
+
+
+`AppBar _buildRecipeAppBar() => AppBar();` 함수 수정
+
+**actions : [] 태그 안에 원하는 아이콘 추가**
+
+- 아이콘 위젯은 2개가 존재
+    - Material → 안드로이드
+    - Cupurtino  → 애플
+    
+    둘 중 더 이쁜걸 사용
+    
+
+`Icon(CupertinoIcons.원하는 아이콘)` 을 이용하여 원하는 아이콘 삽입
+
+- 색상 , 사이즈 등 여러가지 인자를 추가적으로 받을 수 있다.
+
+### AppBar 메소드  총 완성 코드
+
+```dart
+AppBar _buildRecipeAppBar() => AppBar(
+        backgroundColor: Colors.white, // AppBar 색상
+        elevation: 1.0, // AppBar 하단 그림자 조절
+        actions: [
+          Icon(
+            CupertinoIcons.search, // 아이콘
+            color: Colors.black, // 색상
+          ),
+          SizedBox(width: 15), //아이콘끼리 간격
+          Icon(
+            CupertinoIcons.heart,
+            color: Colors.redAccent,
+          ),
+        ],
+      );
+```
+
+</div>
+</details>
+
 
 </div>
 </details>
 
 <!-- 5장 -->
+
 
 
 
