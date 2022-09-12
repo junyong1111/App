@@ -1869,6 +1869,187 @@ class StorePage extends StatelessWidget {
 </div>
 </details>
 
+<details>
+<summary> 3장 기본 코드 작성 </summary>
+<div markdown="1">
+
+<aside>
+❗ **Class 이름** : **PascalCase**   **변수 이름 : snake_case**
+
+</aside>
+
+- **lib/components/recipe_title.dart 파일 수정**
+
+```dart
+// 커스텀 위젯 만들기 //
+import 'package:flutter/material.dart';
+// android 앱을 만들기 위해서 material import
+
+class RecipeTitle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+```
+
+- **lib/components/recipe_menu.dart 파일 수정**
+
+```dart
+// 커스텀 위젯 만들기 //
+import 'package:flutter/material.dart';
+// android 앱을 만들기 위해서 material import
+
+class RecipeMenu extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container()
+      ],
+    );
+  }
+}
+```
+
+- **lib/components/recipe_list_item.dart 파일 수정**
+
+`final은 값을 초기화 시켜줘야 한다`
+
+`이 때 생성자를 이용하여 초기화 가능`
+
+`final 변수 위에서 option + enter -> Create constructor for final fields 클릭`
+
+```dart
+// 커스텀 위젯 만들기 //
+import 'package:flutter/material.dart';
+// android 앱을 만들기 위해서 material import
+
+class RecipelistItem extends StatelessWidget {
+  // final은 값을 초기화 시켜줘야 한다
+  // 이 때 생성자를 이용하여 초기화 가능
+  // option + enter -> Create constructor for final fields 클릭
+  final String imagename;
+  final String title;
+
+  const RecipelistItem(this.imagename, this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+```
+
+- **lib/pages/recipe_page.dart 파일 수정**
+
+```dart
+// 커스텀 위젯 만들기 //
+import 'package:flutter/material.dart';
+// android 앱을 만들기 위해서 material import
+
+class RecipePage extends StatelessWidget {
+  const RecipePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
+}
+```
+
+- **lib/main.dart 파일 수정**
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_recipe/pages/recipe_page.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: RecipePage(),
+    );
+  }
+}
+```
+
+Hello World가 잘 나오면 main파일과 연동이 성공한 것이다. 이제 page파일을 재수정하면 된다.
+
+- **lib/pages/recipe_page.dart 파일 재수정**
+
+`return Scaffold()`
+
+1. Background 컬러 변경
+
+`backgroundColor: Colors.*white*,`
+
+2. AppBar 함수 생성
+
+`appBar: AppBar(),` 명령어를 실행 한 후 AppBar() 커서 위에서 ctrl+ alt + m 으로 메소드 만들기
+
+위와  같이 입력 후 Refactor
+
+<img width="322" alt="스크린샷 2022-08-23 오후 11 28 52" src="https://user-images.githubusercontent.com/79856225/189666640-bfec077b-4011-4bea-b625-f57f8dfe935e.png">
+
+
+3. 앱 구조에 맞게 body태그 안에  Column 과 그 안에서 사용할 컴포넌트 추가
+
+```dart
+body: Column(
+          children: [
+            RecipeTitle(),
+            RecipeMenu(),
+            RecipelistItem("coffee", "Made Coffee"),
+            RecipelistItem("burger", "Made Burger"),
+            RecipelistItem("pizza", "Made Pizza")
+          ],
+        ));
+```
+
+### **총 완성 코드**
+
+```dart
+// 커스텀 위젯 만들기 //
+import 'package:flutter/material.dart';
+import 'package:flutter_recipe/components/recipe_menu.dart';
+import 'package:flutter_recipe/components/recipe_title.dart';
+import 'package:flutter_recipe/components/recipte_list_item.dart';
+// android 앱을 만들기 위해서 material import
+
+class RecipePage extends StatelessWidget {
+  const RecipePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: _buildRecipeAppBar(),
+        body: Column(
+          children: [
+            RecipeTitle(),
+            RecipeMenu(),
+            RecipelistItem("coffee", "Made Coffee"),
+            RecipelistItem("burger", "Made Burger"),
+            RecipelistItem("pizza", "Made Pizza")
+          ],
+        ));
+  }
+
+  AppBar _buildRecipeAppBar() => AppBar();
+}
+```
+
+**저장 후 확인해보면 아무것도 보이지는 않지만 오류가 안난다면 정상적으로 코드를 작성한 것이다.**
+
+</div>
+</details>
+
 
 </div>
 </details>
