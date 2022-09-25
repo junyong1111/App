@@ -2105,6 +2105,385 @@ AppBar _buildRecipeAppBar() => AppBar(
 </div>
 </details>
 
+<details>
+<summary> 5장 Font 설정 및 Text 위젯 디자인(Title , Main, Page 파일 수정) </summary>
+<div markdown="1">
+
+폰트 또는 이미지가 적용되려면 에뮬레이터를 한 번 정지했다가 켜야 한다.
+
+- **lib/components/recipe_title.dart 파일 수정**
+
+Title에 쓰이는 컴포넌트이므로 Text를 반환한다.
+
+1. `style: TextStyle(fontSize: 30)` 를 이용하여 원하는 텍스트 스타일의 크기로 수정해준다.
+2. `padding: const EdgeInsets.only(top: 8.0)` 을 이용하여 AppBar와의 간격 유지
+
+### 수정 코드(**recipe_title.dart)**
+
+```dart
+// 커스텀 위젯 만들기 //
+import 'package:flutter/material.dart';
+// android 앱을 만들기 위해서 material import
+
+class RecipeTitle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: Text(
+        "Recipes",
+        style: TextStyle(fontSize: 30),
+      ),
+    );
+  }
+}
+```
+
+- **lib/pages/recipe_page.dart 파일 수정**
+1. 최초 타이틀 Text가 정중앙에 위치 → 제일 왼쪽으로 옮기기 위하여 Colum 태그에 다음 코드 삽입
+
+`crossAxisAlignment: CrossAxisAlignment.start,`
+
+1. 양 끝 텍스트간의 약간의 여백을 위하여 패딩 설정
+
+`padding: const EdgeInsets.symmetric(horizontal: 20),`
+
+### 수정 코드(recipe_page.dart)
+
+```dart
+// 커스텀 위젯 만들기 //
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_recipe/components/recipe_menu.dart';
+import 'package:flutter_recipe/components/recipe_title.dart';
+import 'package:flutter_recipe/components/recipte_list_item.dart';
+// android 앱을 만들기 위해서 material import
+
+class RecipePage extends StatelessWidget {
+  const RecipePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: _buildRecipeAppBar(),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RecipeTitle(),
+              RecipeMenu(),
+              RecipelistItem("coffee", "Made Coffee"),
+              RecipelistItem("burger", "Made Burger"),
+              RecipelistItem("pizza", "Made Pizza")
+            ],
+          ),
+        ));
+  }
+
+  AppBar _buildRecipeAppBar() => AppBar(
+        backgroundColor: Colors.white, // AppBar 색상
+        elevation: 1.0, // AppBar 하단 그림자 조절
+        actions: [
+          Icon(
+            CupertinoIcons.search, // 아이콘
+            color: Colors.black, // 색상
+          ),
+          SizedBox(width: 15), //아이콘끼리 간격
+          Icon(
+            CupertinoIcons.heart,
+            color: Colors.redAccent,
+          ),
+        ],
+      );
+}
+```
+
+- **lib/main.dart 파일 수정**
+1. 폰트 추가를 위하여 폰트 테마 설정
+
+`theme: ThemeData(fontFamily: "PatuaOne")` 이 때 자신이 지정해 놓은 폰트 이름과 같아야 함
+
+### 수정 코드(main.dart)
+
+```dart
+
+import 'package:flutter/material.dart';
+import 'package:flutter_recipe/pages/recipe_page.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: "PatuaOne"),
+      home: RecipePage(),
+    );
+  }
+}
+```
+
+<img width="308" alt="스크린샷 2022-08-24 오후 12 51 45" src="https://user-images.githubusercontent.com/79856225/192136745-480c204f-b04a-4813-805c-67032f6c23db.png">
+
+
+</div>
+</details>
+
+<details>
+<summary> 6장 Container 디자인(Menu 파일 수정) </summary>
+<div markdown="1">
+
+**메뉴 생성**
+
+<img width="384" alt="스크린샷 2022-08-24 오전 12 05 01" src="https://user-images.githubusercontent.com/79856225/192136799-b6d2047e-f484-4e8c-884e-7389b6bfe1a9.png">
+
+### 컨테이너 하나를 만들어서 재사용
+
+- 컨테이너 특징
+    - 자식이 없는 컨테이너는 가능한 한 박스를 크게 만들려고 한다.
+    
+   <img width="520" alt="스크린샷 2022-08-24 오전 12 10 19" src="https://user-images.githubusercontent.com/79856225/192136803-03c8a599-4d06-46d8-91b9-24b27c6ea4a2.png">
+    
+    - 자식이 있는 컨테이너는 자식의 크기에 맞게 조정이 된다.
+    
+    <img width="525" alt="스크린샷 2022-08-24 오전 12 10 44" src="https://user-images.githubusercontent.com/79856225/192136805-f0c23bcf-aba4-4e38-b218-3b25920f5209.png">
+    
+    **lib/components/recipe_menu.dart 파일 수정**
+    
+    ### 1. **Container를 만들어야 하므로 Container()태그에 코드 추가**
+    
+    ### 2. **컨테이너 꾸미기**
+    
+    `decoration: BoxDecoration()` 를 이용하여 컨테이너 모양을 수정 할 수 있다.
+    
+    - 컨테이너 사각형의 색상 변경
+    
+    `border: Border.all(원하는 색상)`
+    
+    - 컨테이너 사각형을 라운드 지게 만들기
+    
+    `borderRadius: BorderRadius.circular(원하는 반지름)`
+    
+    ```dart
+    decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black12,
+              ),
+              borderRadius: BorderRadius.circular(30)),
+    ```
+    
+    ### 3. **컨테이너는 자식을 하나밖에 가질 수 없다 위 아래로 아이콘과 텍스트를 넣어야 하므로 컬럼 자식 생성**
+    
+    `child: Column()`
+    
+    - 컨테이너 안에 있는 아이콘과 텍스트의 위치 설정
+    
+    `mainAxisAlignment: MainAxisAlignment.center`
+    
+    - 아이콘과 텍스트가 들어가야하므로 childen[] 생성 하여 아이콘과 텍스트 설정
+        - 아이콘 설정
+        
+        `Icon(Icons.food_bank, color: Colors.*redAccent*, size: 30,)`
+        
+        - 텍스트 설정
+        
+        `Text(("text"))`
+        
+        - 아이콘과 텍스트 사이에 SizeBox를 이용하여 공백 생성
+        
+        ```dart
+        child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.food_bank,
+                    color: Colors.redAccent,
+                    size: 30,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(("text"))
+                ],
+              )
+        ```
+        
+        ### 4. **(3)에서 만든 컨테이너 메소드 화**
+        
+        **Container 클릭 후 메소드 만들기 클릭**
+        
+        <img width="319" alt="스크린샷 2022-08-24 오전 12 25 47" src="https://user-images.githubusercontent.com/79856225/192136807-ccd818c4-4b04-4391-aaab-939238358844.png">
+        
+        - Icon 인자와 Text 인자를 받도록 설정
+        
+        `Container _buildMenuItem(IconData mIcon, String text)`
+        
+        - 4개의 메뉴아이템 메소드에 인자를 넣어서 완성
+        
+        ```dart
+        					_buildMenuItem(Icons.food_bank, "ALL"),
+                  SizedBox(width: 25),
+                  _buildMenuItem(Icons.emoji_food_beverage, "Coffee"),
+                  SizedBox(width: 25),
+                  _buildMenuItem(Icons.fastfood, "Burger"),
+                  SizedBox(width: 25),
+                  _buildMenuItem(Icons.local_pizza, "Pizza"),
+        ```
+        
+        ### 5. Title과의 간격을 위하여 패딩 설정
+        
+        `padding: const EdgeInsets.only(top: 20)`
+        
+        ### 완성 코드(Menu.dart)
+        
+        ```dart
+        // 커스텀 위젯 만들기 //
+        import 'package:flutter/material.dart';
+        // android 앱을 만들기 위해서 material import
+        
+        class RecipeMenu extends StatelessWidget {
+          @override
+          Widget build(BuildContext context) {
+            return Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Row(
+                children: [
+                  _buildMenuItem(Icons.food_bank, "ALL"),
+                  SizedBox(width: 25),
+                  _buildMenuItem(Icons.emoji_food_beverage, "Coffee"),
+                  SizedBox(width: 25),
+                  _buildMenuItem(Icons.fastfood, "Burger"),
+                  SizedBox(width: 25),
+                  _buildMenuItem(Icons.local_pizza, "Pizza"),
+                ],
+              ),
+            );
+          }
+        
+          Container _buildMenuItem(IconData mIcon, String text) {
+            return Container(
+              height: 80,
+              width: 60,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black12,
+                  ),
+                  borderRadius: BorderRadius.circular(30)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    mIcon,
+                    color: Colors.redAccent,
+                    size: 30,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text((text))
+                ],
+              ),
+            );
+          }
+        }
+        ```
+
+</div>
+</details>
+
+<details>
+<summary> 7장 SingleChildScrowView(Menu 파일 수정) </summary>
+<div markdown="1">
+
+핸드폰 화면에 따라 컨테이너를 추가했을 때 Overflow가 나는 경우가 있다. 
+
+이 때 스크롤을 사용하여 이를 방지할 수 있다.
+
+- 컨테이너를 1개 더 추가한 모습 Overflow가 난다
+
+
+<img width="222" alt="스크린샷 2022-08-24 오후 12 43 45" src="https://user-images.githubusercontent.com/79856225/192136860-b145f650-2dd3-4cfa-9f92-34de17339552.png">
+
+
+- `SingleChildScrollView()`를 이용
+- Row태그를 감싼 후 → 위젯 설정 → SingleChildScrollView()클릭
+
+→ `scrollDirection: Axis.horizontal`를 입력
+
+```dart
+child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+```
+
+이후 화면을 확인해보면 스크롤로 Overlflow난 컨테이너를 확인할 수 있다.
+
+### 완성 코드(Menu)
+
+```dart
+// 커스텀 위젯 만들기 //
+import 'package:flutter/material.dart';
+// android 앱을 만들기 위해서 material import
+
+class RecipeMenu extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            _buildMenuItem(Icons.food_bank, "ALL"),
+            SizedBox(width: 25),
+            _buildMenuItem(Icons.emoji_food_beverage, "Coffee"),
+            SizedBox(width: 25),
+            _buildMenuItem(Icons.fastfood, "Burger"),
+            SizedBox(width: 25),
+            _buildMenuItem(Icons.local_pizza, "Pizza"),
+            SizedBox(width: 25),
+            _buildMenuItem(Icons.local_bar_rounded, "Cocktail"),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container _buildMenuItem(IconData mIcon, String text) {
+    return Container(
+      height: 80,
+      width: 60,
+      decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black12,
+          ),
+          borderRadius: BorderRadius.circular(30)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            mIcon,
+            color: Colors.redAccent,
+            size: 30,
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text((text))
+        ],
+      ),
+    );
+  }
+}
+```
+
+</div>
+</details>
+
 
 </div>
 </details>
