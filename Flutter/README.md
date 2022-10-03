@@ -2730,10 +2730,36 @@ class RecipelistItem extends StatelessWidget {
 <summary> 6장 프로필 앱 만들기 </summary>
 <div markdown="1">
 
+
+<details>
+<summary> 0. 이미지 1장 다운로드  </summary>
+<div markdown="1">
+
+![avatar](https://user-images.githubusercontent.com/79856225/193565128-6130c3c5-1919-43ba-a691-f95286b63511.png)
+
+
 </div>
 </details>
 
-<!-- 5장 -->
+<details>
+<summary> 1장 프로필 앱 구조 보기  </summary>
+<div markdown="1">
+
+- **flutter_profile이름의  새로운 프로젝트 생성**
+
+<img width="373" alt="스크린샷 2022-08-24 오후 8 19 18" src="https://user-images.githubusercontent.com/79856225/193565340-b1e201a9-491d-4a92-9f15-3c4dbed1dd8c.png">
+
+<img width="395" alt="스크린샷 2022-08-24 오후 8 21 15" src="https://user-images.githubusercontent.com/79856225/193565354-746bcdd1-7a87-4d83-afd6-1349eca426fb.png">
+
+</div>
+</details>
+
+
+
+</div>
+</details>
+
+<!-- 6장 -->
 
 <!--
 <details>
