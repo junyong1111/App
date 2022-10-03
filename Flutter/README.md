@@ -2754,6 +2754,277 @@ class RecipelistItem extends StatelessWidget {
 </div>
 </details>
 
+<details>
+<summary> 3장 기본 코드 작성 </summary>
+<div markdown="1">
+
+<aside>
+❗ **Class 이름** : **PascalCase**   **변수 이름 : snake_case**
+
+</aside>
+
+### 1. **lib/components/파일 수정**
+
+- **lib/components/profile_header.dart 파일 수정**
+    
+    ```dart
+    import 'package:flutter/material.dart';
+    
+    class ProfileHeader extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Row(
+          children: [_buildHeaderAvatar(), _buildHeaderProfile()],
+        );
+      }
+    
+      Widget _buildHeaderProfile() {
+        return SizedBox();
+      }
+    
+      Widget _buildHeaderAvatar() {
+        return SizedBox();
+      }
+    }
+    ```
+    
+
+- **lib/components/profile_drawer.dart 파일 수정**
+    
+    ```dart
+    import 'package:flutter/material.dart';
+    
+    class PrifileDrawer extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Container(
+          width: 200,
+          height: double.infinity, //최대 크기만큼 확장
+          color: Colors.blue,
+        );
+      }
+    }
+    ```
+    
+- **lib/components/profile_buttons.dart 파일 수정**
+    
+    ```dart
+    import 'package:flutter/material.dart';
+    
+    class ProfileButtons extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Row(
+          children: [
+            _buildFollowButton(),
+            _buildMessageButton(),
+          ],
+        );
+      }
+    
+      Widget _buildFollowButton() {
+        return SizedBox();
+      }
+    
+      Widget _buildMessageButton() {
+        return SizedBox();
+      }
+    }
+    ```
+    
+- **lib/components/profile_count_inf.dart 파일 수정**
+    
+    ```dart
+    import 'package:flutter/material.dart';
+    
+    class ProfileCountInfo extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Row(
+          children: [
+            _buildInfo("50", "Posts"),
+            _buildLine(),
+            _buildInfo("30", "Likes"),
+            _buildLine(),
+            _buildInfo("10", "Share"),
+          ],
+        );
+      }
+    
+      Widget _buildInfo(String count, String title) {
+        return SizedBox();
+      }
+    
+      Widget _buildLine() {
+        return SizedBox();
+      }
+    }
+    ```
+    
+- **lib/components/profile_tab.dart 파일 수정**
+    
+    ```dart
+    import 'package:flutter/material.dart';
+    
+    //StateFull : 상태가 있는 위젯 -> 상태에 따라 위젯이 변경된다.
+    class ProfileTab extends StatefulWidget {
+      @override
+      State<ProfileTab> createState() => _ProfileTabState();
+    }
+    
+    class _ProfileTabState extends State<ProfileTab> {
+      @override
+      Widget build(BuildContext context) {
+        return Column(
+          children: [
+            _buildTabBar(),
+            _buildTabBarView(),
+          ],
+        );
+      }
+    
+      Widget _buildTabBar() {
+        return SizedBox();
+      }
+    
+      Widget _buildTabBarView() {
+        return SizedBox();
+      }
+    }
+    ```
+    
+
+### 2. **lib/pages/파일 수정**
+
+- **lib/pages/profile_page.dart 파일 수정**
+    
+    ```dart
+    import 'package:flutter/material.dart';
+    import 'package:flutter_profile/components/profile_buttons.dart';
+    import 'package:flutter_profile/components/profile_count_info.dart';
+    import 'package:flutter_profile/components/profile_header.dart';
+    import 'package:flutter_profile/components/profile_tab.dart';
+    
+    class ProfilePage extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          body: Column(
+            children: [
+              ProfileHeader(),
+              ProfileCountInfo(),
+              ProfileButtons(),
+              ProfileTab(),
+            ],
+          ),
+        );
+      }
+    }
+    ```
+    
+
+### 3. lib/**파일 수정**
+
+- **lib/theme.dart 파일 수정**
+    
+    ```dart
+    import 'package:flutter/material.dart';
+    
+    // primaryColor: 앱의 브랜드 색상
+    // secondary color(accent color) : 앱의 버튼이나, 상호작용 하는 이벤트 색상
+    ThemeData theme() {
+      return ThemeData(
+        fontFamily: "PatuaOne",
+        primaryColor: Colors.blue,
+        appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            iconTheme: IconThemeData(
+              color: Colors.blue,
+            )),
+      );
+    }
+    ```
+    
+- **lib/main.dart 파일 수정**
+    
+    ```dart
+    import 'package:flutter/material.dart';
+    import 'package:flutter_profile/components/profile_header.dart';
+    import 'package:flutter_profile/pages/ProfilePage.dart';
+    import 'package:flutter_profile/theme.dart';
+    
+    void main() {
+      runApp(MyApp());
+    }
+    
+    class MyApp extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: theme(),
+          home: ProfilePage(),
+        );
+      }
+    }
+    ```
+
+</div>
+</details>
+
+
+<details>
+<summary> 4장 AppBar (Page 수정) </summary>
+<div markdown="1">
+
+- AppBar의 기본 구조
+
+<img width="403" alt="스크린샷 2022-08-23 오후 11 36 58" src="https://user-images.githubusercontent.com/79856225/193576382-911c58e3-8e0e-4bb2-a498-4f6f23f19b75.png">
+
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_profile/components/profile_buttons.dart';
+import 'package:flutter_profile/components/profile_count_info.dart';
+import 'package:flutter_profile/components/profile_drawer.dart';
+import 'package:flutter_profile/components/profile_header.dart';
+import 'package:flutter_profile/components/profile_tab.dart';
+import 'package:flutter_profile/theme.dart';
+
+class ProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      endDrawer: ProfileDrawer(),
+      appBar: _buildAppBar(),
+      body: Column(
+        children: [
+          ProfileHeader(),
+          ProfileCountInfo(),
+          ProfileButtons(),
+          ProfileTab(),
+        ],
+      ),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    theme();
+    return AppBar(
+      leading: Icon(Icons.arrow_back_ios_new),
+      title: Text(
+        "Profile",
+        style: TextStyle(color: Colors.blue),
+      ),
+      centerTitle: true,
+    );
+  }
+}
+```
+
+</div>
+</details>
+
 
 
 </div>
