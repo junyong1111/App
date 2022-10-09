@@ -3025,6 +3025,225 @@ class ProfilePage extends StatelessWidget {
 </div>
 </details>
 
+<details>
+<summary> 5장 CircleAvatar 위젯 (header 파일 수정) </summary>
+<div markdown="1">
+
+<img width="178" alt="스크린샷 2022-08-24 오후 9 36 41" src="https://user-images.githubusercontent.com/79856225/194755886-ba6d71bf-40fb-4d1d-bb63-2eb97e8062f2.png">
+
+- **profile_header.dart 파일 수정**
+    
+    ```dart
+    import 'package:flutter/material.dart';
+    
+    class ProfileHeader extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Row(
+          children: [_buildHeaderAvatar(), _buildHeaderProfile()],
+        );
+      }
+    
+      Widget _buildHeaderProfile() {
+        return SizedBox();
+      }
+    
+      Widget _buildHeaderAvatar() {
+        return SizedBox(
+          width: 100,
+          height: 120,
+          child: CircleAvatar(
+            backgroundImage: AssetImage(
+              "assets/images/avatar.png",
+            ),
+          ),
+        );
+      }
+    }
+    ```
+
+
+</div>
+</details>
+
+<details>
+<summary> 6장 crossAxixAliqment(header, page 파일 수정) </summary>
+<div markdown="1">
+
+
+<img width="242" alt="스크린샷 2022-08-26 오전 1 27 03" src="https://user-images.githubusercontent.com/79856225/194755935-4385cff5-27cd-459d-b6bb-5bc107560831.png">
+
+
+- 구조
+    
+    **텍스트**
+    
+    **텍스트**
+    
+    **텍스트**
+    
+- **profile_header.dart 파일 수정**
+    - **_buildHeaderProfile 함수 수정**
+
+```dart
+Widget _buildHeaderProfile() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "GetinThere",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        Text(
+          "프로그래머/작가/강사",
+          style: TextStyle(fontSize: 20),
+        ),
+        Text(
+          "데이터프로그래밍",
+          style: TextStyle(fontSize: 15),
+        ),
+      ],
+    );
+  }
+```
+
+### 수정 코드(**profile_header.dart )**
+
+```dart
+import 'package:flutter/material.dart';
+
+class ProfileHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 20,
+        ),
+        _buildHeaderAvatar(),
+        SizedBox(
+          width: 20,
+        ),
+        _buildHeaderProfile(),
+      ],
+    );
+  }
+
+  Widget _buildHeaderProfile() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "GetinThere",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        Text(
+          "프로그래머/작가/강사",
+          style: TextStyle(fontSize: 20),
+        ),
+        Text(
+          "데이터프로그래밍",
+          style: TextStyle(fontSize: 15),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHeaderAvatar() {
+    return SizedBox(
+      width: 100,
+      height: 120,
+      child: CircleAvatar(
+        backgroundImage: AssetImage(
+          "assets/images/avatar.png",
+        ),
+      ),
+    );
+  }
+}
+```
+
+### 수정 코드 (profile_page.dart)
+
+→ 앱 바와 글자간의 간격을 위한 SizedBox()추가
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_profile/components/profile_buttons.dart';
+import 'package:flutter_profile/components/profile_count_info.dart';
+import 'package:flutter_profile/components/profile_drawer.dart';
+import 'package:flutter_profile/components/profile_header.dart';
+import 'package:flutter_profile/components/profile_tab.dart';
+import 'package:flutter_profile/theme.dart';
+
+class ProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      endDrawer: ProfileDrawer(),
+      appBar: _buildAppBar(),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 20,
+          ),
+          ProfileHeader(),
+          SizedBox(
+            height: 20,
+          ),
+          ProfileCountInfo(),
+          SizedBox(
+            height: 20,
+          ),
+          ProfileButtons(),
+          ProfileTab(),
+        ],
+      ),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    theme();
+    return AppBar(
+      leading: Icon(Icons.arrow_back_ios_new),
+      title: Text(
+        "Profile",
+        style: TextStyle(color: Colors.black),
+      ),
+      centerTitle: true,
+    );
+  }
+}
+```
+
+
+</div>
+</details>
+
+<details>
+<summary> 7장 InkWell 버튼 만들기(Buttons.파일 수정) </summary>
+<div markdown="1">
+
+
+
+</div>
+</details>
+
+<details>
+<summary> 8장 TabBar와 TabBarView 위젯 (tab, page파일 수정) </summary>
+<div markdown="1">
+
+
+
+</div>
+</details>
+
 
 
 </div>
